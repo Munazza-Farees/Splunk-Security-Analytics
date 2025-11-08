@@ -21,12 +21,12 @@ This repository contains **Splunk SIEM dashboards** that analyze security logs, 
 │
 ├── 📁 smtp-log-analysis-dashboard/
 │ ├── README.md
-│ ├── dashboards/
+│ ├── dashboard/
 │ ├── queries.txt/
 │
 ├── 📁 cross-layer-security-dashboard/
 │ ├── README.md
-│ ├── dashboards/
+│ ├── dashboard/
 │ ├── queries.txt/
 │
 └── README.md (this file)
