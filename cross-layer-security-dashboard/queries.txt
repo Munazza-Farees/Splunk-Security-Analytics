@@ -1,1 +1,19 @@
 Queries
+
+1. ALLOW vs DENY trend
+
+index=net_sec_logs action=ALLOW OR action=DENY
+| timechart span=15m count by action
+
+2. Top blocked source–destination pairs
+
+index=net_sec_logs action=DENY
+| stats count as events by src_ip dest_ip dest_port
+| sort - events
+| head 20
+
+3. Correlated Security Incident View
+
+index IN ("net_sec_logs","os_logs","server_logs","sys_logs")
+| stats count by index, Timestamp
+| sort -Timestamp
