@@ -1,0 +1,21 @@
+Queries
+
+1. Top HELO/EHLO domains
+
+index=smtp_logs 
+| stats count by helo_ehlo
+| sort - count
+
+2. SMTP reply code distribution
+
+index=smtp_logs smtp_code=*
+| stats count by smtp_code
+| sort - count
+
+3. Success vs Failure pie 
+
+index=smtp_logs smtp_code=*
+| eval status=case(match(smtp_code,"^2"),"Success",
+                   match(smtp_code,"^(4|5)"),"Failure",
+                   true(),"Other")
+| stats count by status
